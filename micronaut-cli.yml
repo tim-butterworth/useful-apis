@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: secrets
+---
+testFramework: kotlintest
+sourceLanguage: kotlin
