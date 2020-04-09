@@ -11,19 +11,25 @@ import javax.validation.constraints.NotNull
 
 
 @Singleton
-open class Repository(
+open class SecretRepository(
         @field:PersistenceContext @param:CurrentSession private val entityManager: EntityManager
 ) {
     @Transactional(readOnly = true)
-    open fun findById(id: @NotNull Long?): Option<GreatEntity> {
-        return Option.fromNullable(entityManager.find(GreatEntity::class.java, id))
+    open fun findById(id: @NotNull Long?): Option<EncryptedSecret> {
+        return Option.fromNullable(entityManager.find(EncryptedSecret::class.java, id))
     }
 
     @Transactional
-    open fun save(name: @NotBlank String?): GreatEntity {
-        val genre = GreatEntity(name)
-        entityManager.persist(genre)
-        return genre
+    open fun save(key: @NotBlank String, value: @NotBlank String): EncryptedSecret {
+        val secret = EncryptedSecret(
+                key = key,
+                value = value
+        )
+        entityManager.persist(secret)
+
+        return secret
     }
 
+    @Transactional
+    open fun findByKey(key: String): Option<EncryptedSecret> = Option.empty()
 }
