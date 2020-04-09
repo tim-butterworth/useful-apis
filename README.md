@@ -1,1 +1,1 @@
-This is where the project info should go :)
+This project uses regular micronaut and some Hibernate
