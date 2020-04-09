@@ -7,7 +7,10 @@ object Application {
     @JvmStatic
     fun main(args: Array<String>) {
         Micronaut.build()
-                .packages("secrets")
+                .packages(
+                        "secrets.web",
+                        "secrets.io"
+                )
                 .mainClass(Application.javaClass)
                 .start()
     }
