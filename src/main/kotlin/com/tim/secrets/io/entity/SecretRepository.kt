@@ -31,5 +31,7 @@ open class SecretRepository(
     }
 
     @Transactional
-    open fun findByKey(key: String): Option<EncryptedSecret> = Option.empty()
+    open fun findByKey(key: String): Option<EncryptedSecret> {
+        return Option.fromNullable(entityManager.find(EncryptedSecret::class.java, "key"))
+    }
 }
