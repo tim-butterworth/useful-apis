@@ -7,7 +7,7 @@ import com.tim.secrets.io.MapProvider
 import javax.inject.Singleton
 
 @Singleton
-class EncryptedRecordInMemoryReadReadRepository(
+class EncryptedRecordInMemoryReadRepository(
         private val mapProvider: MapProvider
 ) : EncryptedRecordReadRepository {
 
